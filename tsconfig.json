@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "lib": ["es2020"],
+    "module": "commonjs",
+    "target": "es2020",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "typeRoots" : ["./node_modules/@types", "./src/types"]
+  },
+  "include": ["./src/**/*"],
+  "exclude": [
+    "src/**/__tests__/*",
+    "src/**/__mocks__/*",
+    "src/**/__fixtures__/*"
+  ],
+}
