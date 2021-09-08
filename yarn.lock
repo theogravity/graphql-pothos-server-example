@@ -74,6 +74,11 @@
   resolved "https://registry.yarnpkg.com/@giraphql/core/-/core-2.15.1.tgz#8a5632742500385a3b346f14f4c404f0c6df6222"
   integrity sha512-MAkeUL3pBAg34LD+3oFxBGvoPOc+rNcXUDl40LfcZojDfrnKqgPqH2vKApiOD++/0SPdHooIlUYp+rZ1lu+e3g==
 
+"@giraphql/plugin-directives@^2.7.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@giraphql/plugin-directives/-/plugin-directives-2.7.1.tgz#690cd09c4c10cd136efa7d4c8d66a277f5f45877"
+  integrity sha512-3Vlr5/OgGD6s0yctIXgyZ/cxCfmXYTpQ2n91iyZ1HZ7eV330gJO9LHpj96u+mz+w9u9EBmEWK7ZbDM6fKjg36w==
+
 "@graphql-tools/merge@^8.1.0":
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.1.1.tgz#692ff0de5e6b025a1166e25d7cda4e20ec0c2df3"

@@ -8,15 +8,14 @@
     "sequelize": "sequelize",
     "dev": "ts-node-dev --respawn -- src/",
     "build": "tsc",
-    "lint": "eslint 'src/**/*.ts'",
-    "lint:fix": "eslint --fix 'src/**/*.ts'",
-    "prettier": "prettier 'src/**/*.ts'",
-    "prettier:fix": "prettier --write 'src/**/*.ts'"
+    "lint": "yarn lint:fix && eslint 'src/**/*.ts'"
   },
   "author": "Theo Gravity <theo@suteki.nu>",
   "license": "MIT",
   "dependencies": {
     "@giraphql/core": "^2.15.1",
+    "@giraphql/plugin-directives": "^2.7.1",
+    "@graphql-tools/utils": "^8.2.2",
     "apollo-datasource": "^3.1.0",
     "apollo-server-express": "^3.3.0",
     "dataloader-sequelize": "^2.3.3",

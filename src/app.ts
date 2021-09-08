@@ -9,6 +9,7 @@ import { Sequelize } from 'sequelize-typescript';
 import { db } from './db';
 import { PostsDatasource } from './datasources/posts.datasource';
 import { UsersDatasource } from './datasources/users.datasource';
+import { registerDirectives } from './gql/directives';
 
 const SERVER_PORT = 3000;
 
@@ -23,7 +24,10 @@ export interface GQLContext {
 }
 
 export async function init() {
-  const schema = builder.toSchema({});
+  let builderSchema = builder.toSchema({});
+
+  builderSchema = registerDirectives(builderSchema);
+
   await db.sync();
 
   const dataSources: any = {
@@ -32,7 +36,7 @@ export async function init() {
   };
 
   const server = new ApolloServer({
-    schema,
+    schema: builderSchema,
     dataSources: () => dataSources,
     context: () => {
       return {
