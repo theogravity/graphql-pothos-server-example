@@ -1,0 +1,16 @@
+schema: ./gql-schema/schema.graphql
+generates:
+  ./gql-schema/gql-types.d.ts:
+    plugins:
+      - typescript
+    config:
+      # The optionals get annoying with ? being undefined, meaning you have to cover
+      # both undefined and null in your typescript handling
+      # Optional fields will be wrapped with Maybe which will be the item or null
+      avoidOptionals: true
+      # From personal experience, it's better to have this defined as the object or null vs undefined
+      maybeValue: T | null
+
+  ./gql-schema/apollo-helpers.ts:
+    plugins:
+      - typescript-apollo-client-helpers

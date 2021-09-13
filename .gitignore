@@ -118,3 +118,5 @@ dist
 .pnp.*
 .idea/
 blog.dev.db
+
+gql-schema/

@@ -15,7 +15,8 @@
     "test:coverage:watch": "NODE_ENV=test jest --coverage --watch",
     "lint-staged": "lint-staged",
     "lint:fix": "eslint 'src/**/*.ts' --fix",
-    "lint": "yarn lint:fix && eslint 'src/**/*.ts'"
+    "lint": "yarn lint:fix && eslint 'src/**/*.ts'",
+    "generate": "ts-node-dev bin/generate-gql-schema.ts && graphql-codegen"
   },
   "author": "Theo Gravity <theo@suteki.nu>",
   "license": "MIT",
@@ -36,6 +37,9 @@
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.2.0",
+    "@graphql-codegen/typescript": "^2.2.2",
+    "@graphql-codegen/typescript-apollo-client-helpers": "^2.1.4",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.10",

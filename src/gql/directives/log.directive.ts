@@ -19,8 +19,8 @@ export function registerLogDirective(schema: GraphQLSchema) {
           return fieldConfig;
         }
 
-        // Replace the original resolver with a function that *first* calls
-        // the original resolver, then converts its result to upper case
+        // Replace the original resolver so we can put in our custom directive logic, then call
+        // the original resolver
         fieldConfig.resolve = async function (source, args, context, info) {
           console.log(`Directive ${DirectiveNames.consoleLog} accessing field '${info.fieldName}'`);
 

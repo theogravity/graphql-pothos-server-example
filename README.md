@@ -15,6 +15,7 @@ Components:
 - [sequelize-typescript](https://www.npmjs.com/package/sequelize-typescript) for defining `sequelize` models
 - [dataloader-sequelize](https://github.com/mickhansen/dataloader-sequelize) as a [dataloader](https://www.apollographql.com/docs/apollo-server/data/data-sources/#using-with-dataloader) provider for `sequelize`
 - [graphql-playground](https://github.com/graphql/graphql-playground)
+- [graphql-codegen](https://www.graphql-code-generator.com/) to generate the schema file and typescript definitions for frontend consumption
 
 ## Installing
 
@@ -36,6 +37,19 @@ The server will start on port `3000`.
 Run tests with:
 
 `$ yarn test`
+
+## Schema + Typescript definition generation
+
+You can use the [`graphql-codegen`](https://www.graphql-code-generator.com/) generated files with your frontend for type information when calling the server.
+
+`$ yarn generate`
+
+Generated files are located in the `gql-schema` directory.
+
+The following plugins are used:
+
+- [typescript](https://www.graphql-code-generator.com/docs/plugins/typescript)
+- [typescript-apollo-client-helpers](https://www.graphql-code-generator.com/docs/plugins/typescript-apollo-client-helpers)
 
 ## Directory structure
 
