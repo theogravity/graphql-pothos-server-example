@@ -5,6 +5,7 @@ import gqlPlayground from 'graphql-playground-middleware-express';
 
 import { builder } from './gql/gql-builder';
 import './gql';
+
 import { Sequelize } from 'sequelize-typescript';
 import { db } from './db';
 import { PostsDatasource } from './datasources/posts.datasource';

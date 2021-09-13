@@ -1,5 +1,6 @@
 import { builder } from '../gql-builder';
 import Post from '../../db/models/Post.model';
+import { GQLContext } from '../../app';
 import User from '../../db/models/User.model';
 
 builder.objectType(Post, {
@@ -18,8 +19,12 @@ builder.objectType(Post, {
       type: User,
       description: 'Post author',
       resolve: (parent, args, context) => {
-        return context.dataSources.users.getUserById(parent.authorId);
+        return postAuthorResolver(parent.authorId, context);
       },
     }),
   }),
 });
+
+export function postAuthorResolver(authorId: number, context: GQLContext) {
+  return context.dataSources.users.getUserById(authorId);
+}

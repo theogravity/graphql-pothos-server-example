@@ -1,7 +1,7 @@
 import { builder } from '../gql-builder';
 import User from '../../db/models/User.model';
-import Post from '../../db/models/Post.model';
 import { useLogDirective } from '../directives';
+import Post from '../../db/models/Post.model';
 
 builder.objectType(User, {
   name: 'User',

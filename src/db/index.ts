@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
-import { development, production } from '../config/db';
+import { development, production, test } from '../config/db';
 
 let config;
 
@@ -9,6 +9,9 @@ switch (process.env.NODE_ENV) {
     break;
   case 'production':
     config = production;
+    break;
+  case 'test':
+    config = test;
     break;
   default:
     config = development;
