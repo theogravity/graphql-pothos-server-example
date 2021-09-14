@@ -1,7 +1,7 @@
 import { builder } from '../gql-builder';
 import User from '../../db/models/User.model';
 import { useLogDirective } from '../directives';
-import Post from '../../db/models/Post.model';
+import { userPostsField } from './user.posts.field';
 
 builder.objectType(User, {
   name: 'User',
@@ -11,12 +11,7 @@ builder.objectType(User, {
       directives: [useLogDirective()],
     }),
     name: t.exposeString('name'),
-    posts: t.field({
-      type: [Post],
-      description: `User's blog posts`,
-      resolve: async (parent, args, context) => {
-        return context.dataSources.posts.getPostsByAuthorId(parent.id);
-      },
-    }),
+    // If your field may be a large implementation, we can separate it out to its own function
+    posts: userPostsField(t),
   }),
 });
