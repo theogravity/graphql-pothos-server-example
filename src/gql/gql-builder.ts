@@ -15,11 +15,10 @@ type DirectiveTypes = {
 type UserSchemaType = {
   Directives: DirectiveTypes;
   Context: GQLContext;
-  DefaultFieldNullability: true;
+  DefaultFieldNullability: false;
 };
 
 export const builder = new SchemaBuilder<UserSchemaType>({
-  defaultFieldNullability: true,
   plugins: [DirectivePlugin, SimpleObjectsPlugin],
 });
 

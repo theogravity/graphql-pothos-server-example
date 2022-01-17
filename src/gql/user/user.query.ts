@@ -8,6 +8,7 @@ builder.queryField('user', (t) => {
     args: {
       id: t.arg.id(),
     },
+    nullable: true,
     resolve: async (parent, args, context: GQLContext) => {
       if (!args.id) {
         return null;

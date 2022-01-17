@@ -24,6 +24,7 @@ const CreateUserPayload = builder.simpleObject('CreateUserPayload', {
 builder.mutationField('createUser', (t) => {
   return t.field({
     type: CreateUserPayload,
+    nullable: false,
     args: {
       input: t.arg({ type: UserInput, required: true }),
     },

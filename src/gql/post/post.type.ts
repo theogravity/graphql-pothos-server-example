@@ -17,6 +17,7 @@ builder.objectType(Post, {
     }),
     author: t.field({
       type: User,
+      nullable: true,
       description: 'Post author',
       resolve: (parent, args, context) => {
         return postAuthorResolver(parent.authorId, context);

@@ -17,6 +17,7 @@ builder.mutationField('createPost', (t) => {
     args: {
       input: t.arg({ type: PostInput, required: true }),
     },
+    nullable: false,
     resolve: (root, args, context) => {
       return createPostMutation(args.input, context);
     },

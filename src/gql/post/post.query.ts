@@ -9,6 +9,7 @@ builder.queryField('post', (t) => {
       id: t.arg.id(),
     },
     description: 'Blog post',
+    nullable: true,
     resolve: async (parent, args, context: GQLContext) => {
       if (!args.id) {
         return null;

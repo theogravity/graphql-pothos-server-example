@@ -1,8 +1,8 @@
 module.exports = {
   preset: 'ts-jest',
-  collectCoverageFrom: ['src/**/*.ts'],
+  collectCoverageFrom: ['../src/**/*.ts'],
   testEnvironment: 'node',
-  testPathIgnorePatterns: ['/build', '/node_modules/', '/integration-tests/'],
+  testPathIgnorePatterns: ['/build', '/node_modules/'],
   coverageThreshold: {
     global: {
       statements: 0,
@@ -11,4 +11,6 @@ module.exports = {
       lines: 0,
     },
   },
+  setupFilesAfterEnv: ['./lib/server.ts'],
+  testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
 };
