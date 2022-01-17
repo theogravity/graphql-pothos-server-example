@@ -9,7 +9,6 @@ import { createPostMutation } from '../create-post.mutation';
 import Post from '../../../db/models/Post.model';
 import { db } from '../../../db';
 import { PostEventLabel, PostEventType } from '../../subscriptions/posts/post-event.interface';
-import { NewPostEvent } from '../../subscriptions/posts/new-post.event';
 
 beforeAll(async () => {
   // Init database / models
@@ -33,7 +32,7 @@ describe('create post mutation', () => {
   it('should create a post', async () => {
     // We can have the createPost mock return some data
     const mockPost = new Post();
-    mockPost.id = '1';
+    mockPost.id = 1;
     mockPost.authorId = 1;
     mockPost.title = 'test-title';
     mockPost.content = 'test-content';
@@ -58,7 +57,7 @@ describe('create post mutation', () => {
 
     // check that the subscription event was published
     expect(mockContext.pubsub.publish).toBeCalledWith(PostEventLabel, {
-      id: '1',
+      id: 1,
       title: 'test-title',
       eventType: PostEventType.NewPost,
     });

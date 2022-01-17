@@ -34,9 +34,13 @@ The server will start on port `3000`.
 
 ## Tests
 
-Run tests with:
+Run unit tests with:
 
-`$ yarn test`
+`$ yarn test:unit`
+
+Integration tests:
+
+`$ yarn test:integration`
 
 ## Schema + Typescript definition generation
 

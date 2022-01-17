@@ -7,7 +7,7 @@ builder.objectType(User, {
   name: 'User',
   description: 'Blog user',
   fields: (t) => ({
-    id: t.exposeID('id', {
+    id: t.exposeInt('id', {
       directives: [useLogDirective()],
     }),
     name: t.exposeString('name'),

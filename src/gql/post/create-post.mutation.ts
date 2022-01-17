@@ -2,7 +2,6 @@ import { builder } from '../gql-builder';
 import { GQLContext } from '../../app';
 import Post from '../../db/models/Post.model';
 import { publishPostEvent } from '../subscriptions/posts/post-events.subscription';
-import { PostEventType } from '../subscriptions/posts/post-event.interface';
 import { NewPostEvent } from '../subscriptions/posts/new-post.event';
 
 const PostInput = builder.inputType('PostInput', {

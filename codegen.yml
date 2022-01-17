@@ -1,6 +1,6 @@
 schema: ./gql-schema/schema.graphql
 generates:
-  ./gql-schema/gql-types.d.ts:
+  ./gql-schema/gql-types.ts:
     plugins:
       - typescript
     config:

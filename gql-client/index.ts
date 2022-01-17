@@ -48,7 +48,7 @@ export type NewPostEvent = IBasePostEvent & {
   /** Event type */
   eventType: PostEventType;
   /** Post id */
-  id: Scalars['String'];
+  id: Scalars['ID'];
   /** Post title */
   title: Scalars['String'];
 };
@@ -104,7 +104,7 @@ export type Subscription = {
 /** Blog user */
 export type User = {
   __typename?: 'User';
-  id: Scalars['ID'];
+  id: Scalars['Int'];
   name: Scalars['String'];
   /** User's blog posts */
   posts: Array<Post>;
@@ -114,23 +114,28 @@ export type UserInput = {
   name: Scalars['String'];
 };
 
-export type UserFragment = { __typename?: 'User', id: string, name: string };
+export type UserFragment = { __typename?: 'User', id: number, name: string };
 
-export type PostFragment = { __typename?: 'Post', content: string, created: string, id: string, title: string, author: { __typename?: 'User', id: string, name: string } | null };
+export type PostFragment = { __typename?: 'Post', content: string, created: string, id: string, title: string, author: { __typename?: 'User', id: number, name: string } | null };
 
 export type CreateUserMutationVariables = Exact<{
   input: UserInput;
 }>;
 
 
-export type CreateUserMutation = { __typename?: 'Mutation', createUser: { __typename?: 'CreateUserPayload', user: { __typename?: 'User', id: string, name: string } } };
+export type CreateUserMutation = { __typename?: 'Mutation', createUser: { __typename?: 'CreateUserPayload', user: { __typename?: 'User', id: number, name: string } } };
 
 export type CreatePostMutationVariables = Exact<{
   input: PostInput;
 }>;
 
 
-export type CreatePostMutation = { __typename?: 'Mutation', createPost: { __typename?: 'Post', content: string, created: string, id: string, title: string, author: { __typename?: 'User', id: string, name: string } | null } };
+export type CreatePostMutation = { __typename?: 'Mutation', createPost: { __typename?: 'Post', content: string, created: string, id: string, title: string, author: { __typename?: 'User', id: number, name: string } | null } };
+
+export type PostEventsSubscriptionVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PostEventsSubscription = { __typename?: 'Subscription', postEvents: { __typename?: 'NewPostEvent', eventType: PostEventType, id: string, title: string } };
 
 export const UserFragmentDoc = gql`
     fragment user on User {
@@ -165,6 +170,17 @@ export const CreatePostDocument = gql`
   }
 }
     ${PostFragmentDoc}`;
+export const PostEventsDocument = gql`
+    subscription postEvents {
+  postEvents {
+    ... on NewPostEvent {
+      eventType
+      id
+      title
+    }
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string) => Promise<T>;
 
@@ -178,6 +194,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     createPost(variables: CreatePostMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreatePostMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<CreatePostMutation>(CreatePostDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createPost');
+    },
+    postEvents(variables?: PostEventsSubscriptionVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PostEventsSubscription> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PostEventsSubscription>(PostEventsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'postEvents');
     }
   };
 }

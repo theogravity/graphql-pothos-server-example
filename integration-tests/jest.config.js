@@ -11,6 +11,7 @@ module.exports = {
       lines: 0,
     },
   },
-  setupFilesAfterEnv: ['./lib/server.ts'],
+  globalSetup: './lib/setup.ts',
+  globalTeardown: './lib/teardown.ts',
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
 };
