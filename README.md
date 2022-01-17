@@ -10,12 +10,15 @@ It is written using Typescript.
 
 Components: 
 
+- [giraphql](https://github.com/hayes/giraphql)
 - [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
+- [Apollo Server Express](https://www.npmjs.com/package/apollo-server-express)
+- [graphql-ws](https://github.com/enisdenjo/graphql-ws) for subscriptions and as a testing client for subscriptions
 - [Sequelize ORM w/ sqlite](https://sequelize.org/master/)
 - [sequelize-typescript](https://www.npmjs.com/package/sequelize-typescript) for defining `sequelize` models
 - [dataloader-sequelize](https://github.com/mickhansen/dataloader-sequelize) as a [dataloader](https://www.apollographql.com/docs/apollo-server/data/data-sources/#using-with-dataloader) provider for `sequelize`
 - [graphql-playground](https://github.com/graphql/graphql-playground)
-- [graphql-codegen](https://www.graphql-code-generator.com/) to generate the schema file and typescript definitions for frontend consumption
+- [graphql-codegen](https://www.graphql-code-generator.com/) to generate the schema file and typescript definitions for frontend consumption, along with a fully-typed GQL client
 
 ## Installing
 
