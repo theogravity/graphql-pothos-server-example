@@ -1,5 +1,4 @@
 schema: ./gql-schema/schema.graphql
-documents: ./src/fragments.js
 generates:
   ./gql-schema/gql-types.d.ts:
     plugins:
@@ -13,6 +12,7 @@ generates:
       maybeValue: T | null
 
   ./gql-client/index.ts:
+    documents: ./src/gql/documents/*.ts
     plugins:
       - typescript
       - typescript-operations

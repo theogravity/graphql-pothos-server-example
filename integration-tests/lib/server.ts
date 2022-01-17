@@ -6,7 +6,7 @@ import { GQL_PATH, SERVER_PORT } from '../consts';
 
 let server: ApolloServer;
 beforeAll(async () => {
-  server = await init({ port: SERVER_PORT, graphqlPath: GQL_PATH });
+  server = await init({ gqlPort: SERVER_PORT, graphqlPath: GQL_PATH });
   console.log(`server started on ${SERVER_PORT}`);
 });
 

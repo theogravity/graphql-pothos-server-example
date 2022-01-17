@@ -8,6 +8,8 @@
 import { createPostMutation } from '../create-post.mutation';
 import Post from '../../../db/models/Post.model';
 import { db } from '../../../db';
+import { PostEventLabel, PostEventType } from '../../subscriptions/posts/post-event.interface';
+import { NewPostEvent } from '../../subscriptions/posts/new-post.event';
 
 beforeAll(async () => {
   // Init database / models
@@ -22,13 +24,16 @@ const mockContext: any = {
       createPost: jest.fn(),
     },
   },
+  pubsub: {
+    publish: jest.fn(),
+  },
 };
 
 describe('create post mutation', () => {
   it('should create a post', async () => {
     // We can have the createPost mock return some data
     const mockPost = new Post();
-    mockPost.id = 1;
+    mockPost.id = '1';
     mockPost.authorId = 1;
     mockPost.title = 'test-title';
     mockPost.content = 'test-content';
@@ -49,6 +54,13 @@ describe('create post mutation', () => {
       authorId: 1,
       title: 'test-title',
       content: 'test-content',
+    });
+
+    // check that the subscription event was published
+    expect(mockContext.pubsub.publish).toBeCalledWith(PostEventLabel, {
+      id: '1',
+      title: 'test-title',
+      eventType: PostEventType.NewPost,
     });
 
     // The result of creating the post should give us back the post from the datasource call

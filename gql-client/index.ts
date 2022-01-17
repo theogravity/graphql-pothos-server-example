@@ -21,6 +21,11 @@ export type CreateUserPayload = {
   user: User;
 };
 
+export type IBasePostEvent = {
+  /** Event type */
+  eventType: PostEventType;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createPost: Post;
@@ -37,6 +42,17 @@ export type MutationCreateUserArgs = {
   input: UserInput;
 };
 
+/** When a new post is created */
+export type NewPostEvent = IBasePostEvent & {
+  __typename?: 'NewPostEvent';
+  /** Event type */
+  eventType: PostEventType;
+  /** Post id */
+  id: Scalars['String'];
+  /** Post title */
+  title: Scalars['String'];
+};
+
 /** Blog post */
 export type Post = {
   __typename?: 'Post';
@@ -47,6 +63,10 @@ export type Post = {
   id: Scalars['ID'];
   title: Scalars['String'];
 };
+
+export enum PostEventType {
+  NewPost = 'NewPost'
+}
 
 export type PostInput = {
   authorId: Scalars['Int'];
@@ -73,6 +93,12 @@ export type QueryPostArgs = {
 
 export type QueryUserArgs = {
   id: InputMaybe<Scalars['ID']>;
+};
+
+export type Subscription = {
+  __typename?: 'Subscription';
+  /** Events related to posts */
+  postEvents: IBasePostEvent;
 };
 
 /** Blog user */

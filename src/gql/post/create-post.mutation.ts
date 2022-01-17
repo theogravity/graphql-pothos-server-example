@@ -1,6 +1,9 @@
 import { builder } from '../gql-builder';
 import { GQLContext } from '../../app';
 import Post from '../../db/models/Post.model';
+import { publishPostEvent } from '../subscriptions/posts/post-events.subscription';
+import { PostEventType } from '../subscriptions/posts/post-event.interface';
+import { NewPostEvent } from '../subscriptions/posts/new-post.event';
 
 const PostInput = builder.inputType('PostInput', {
   fields: (t) => ({
@@ -26,13 +29,23 @@ builder.mutationField('createPost', (t) => {
 
 // We separate out the resolver function so we can write unit tests against it
 // without having to call GQL directly
-export function createPostMutation(
+export async function createPostMutation(
   { authorId, title, content }: { authorId: number; title: string; content: string },
   context: GQLContext,
 ): Promise<Post> {
-  return context.dataSources.posts.createPost({
+  const post = await context.dataSources.posts.createPost({
     authorId,
     title,
     content,
   });
+
+  await publishPostEvent(
+    new NewPostEvent({
+      id: post.id,
+      title,
+    }),
+    context,
+  );
+
+  return post;
 }

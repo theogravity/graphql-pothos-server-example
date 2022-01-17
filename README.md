@@ -2,7 +2,7 @@
 
 This repo demonstrates how to use the graphQL code-based 
 [giraphql](https://giraphql.com/) library to build queries,
-mutations, and add directives. 
+mutations, subscriptions, and add directives. 
 
 It also includes sample `jest` tests.
 

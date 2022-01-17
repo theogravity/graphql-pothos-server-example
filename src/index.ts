@@ -1,6 +1,6 @@
 import { init } from './app';
 
-init({ port: 3000 })
+init({ gqlPort: 3000 })
   .then((server) => {
     console.log(`GraphQL server started on port 3000.\n`);
     console.log(`Endpoint: http://localhost:3000${server.graphqlPath}`);
