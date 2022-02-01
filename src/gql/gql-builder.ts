@@ -1,10 +1,10 @@
-import DirectivePlugin from '@giraphql/plugin-directives';
-import SimpleObjectsPlugin from '@giraphql/plugin-simple-objects';
-import SchemaBuilder from '@giraphql/core';
-import type GiraphQLSchemaTypes from '@giraphql/core';
+import DirectivePlugin from '@pothos/plugin-directives';
+import SimpleObjectsPlugin from '@pothos/plugin-simple-objects';
+import SchemaBuilder from '@pothos/core';
+import type PothosSchemaTypes from '@pothos/core';
 import { GQLContext } from '../app';
 import { DirectiveNames } from './directives';
-import ObjectFieldBuilder from '@giraphql/core/lib/fieldUtils/object';
+import ObjectFieldBuilder from '@pothos/core/lib/fieldUtils/object';
 
 type DirectiveTypes = {
   [DirectiveNames.consoleLog]: {
@@ -23,8 +23,8 @@ export const builder = new SchemaBuilder<UserSchemaType>({
 });
 
 // If you want to isolate a field out, you would use this type to get full typescripting info
-export type GiraphFieldType<ParentType> = ObjectFieldBuilder<
-  GiraphQLSchemaTypes.ExtendDefaultTypes<UserSchemaType>,
+export type PothosFieldType<ParentType> = ObjectFieldBuilder<
+  PothosSchemaTypes.ExtendDefaultTypes<UserSchemaType>,
   ParentType
 >;
 

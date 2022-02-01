@@ -1,7 +1,7 @@
-# giraphql GraphQL Server Example
+# Pothos GraphQL Server Example
 
 This repo demonstrates how to use the graphQL code-based 
-[giraphql](https://giraphql.com/) library to build queries,
+[pothos](https://pothos-graphql.dev) (formerly named `giraphql`) library to build queries,
 mutations, subscriptions, and add directives. 
 
 It also includes sample `jest` tests.
@@ -10,7 +10,7 @@ It is written using Typescript.
 
 Components: 
 
-- [giraphql](https://github.com/hayes/giraphql)
+- [pothos](https://pothos-graphql.dev)
 - [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
 - [Apollo Server Express](https://www.npmjs.com/package/apollo-server-express)
 - [graphql-ws](https://github.com/enisdenjo/graphql-ws) for subscriptions and as a testing client for subscriptions
@@ -64,12 +64,12 @@ In the `src/` folder:
 
 - `datasources/`: Apollo datasources for making db calls
 - `db/`: Sequelize models
-- `gql/`: `giraphql` definitions
+- `gql/`: `pothos` definitions
 
 The `gql/` folder is organized by domain. The reason I've done this vs organizing
 by queries or mutations is the following:
 
-- `giraphql` is a code-based gql definition library. Because it's code-based, you have a lot of control
+- `pothos` is a code-based gql definition library. Because it's code-based, you have a lot of control
 on how to define your graphQL items. The trade-off is that it's more verbose. If you were to
 shove everything under a single query or mutation file, it would be extremely difficult to navigate and read.
 - Types themselves can have multiple resolvers that are independent of a query or mutation and can alone be quite verbose / complex.

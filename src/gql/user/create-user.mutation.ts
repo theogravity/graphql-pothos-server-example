@@ -10,7 +10,7 @@ const UserInput = builder.inputType('UserInput', {
 
 // If we want to do a custom payload, use the simple-objects plugin
 // to define fields without the need for a backing model
-// https://giraphql.com/plugins/simple-objects
+// https://pothos.com/plugins/simple-objects
 
 const CreateUserPayload = builder.simpleObject('CreateUserPayload', {
   fields: (t) => ({

@@ -14,7 +14,7 @@ const PostInput = builder.inputType('PostInput', {
 
 builder.mutationField('createPost', (t) => {
   return t.field({
-    // We feed in the Post model, which giraphql will map to the Post type we created in post.type.ts
+    // We feed in the Post model, which pothos will map to the Post type we created in post.type.ts
     type: Post,
     args: {
       input: t.arg({ type: PostInput, required: true }),
