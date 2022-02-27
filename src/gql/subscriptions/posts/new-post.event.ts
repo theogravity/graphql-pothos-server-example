@@ -18,7 +18,9 @@ builder.objectType(NewPostEvent, {
   description: 'When a new post is created',
   interfaces: [IBasePostEvent],
   isTypeOf: (value) => {
-    return value.eventType === PostEventType.NewPost;
+    // This is the recommended approach to type things in isTypeOf
+    // https://github.com/hayes/pothos/issues/336
+    return (value as NewPostEvent).eventType === PostEventType.NewPost;
   },
   fields: (t) => ({
     id: t.exposeID('id', {
